@@ -1,0 +1,22 @@
+name: Generate build files
+description: 'Generate build files'
+runs:
+  using: composite
+  steps:
+    - name: Restore build files from cache
+      id: restore_build_files_cache
+      uses: actions/cache@v4
+      with:
+        key: ${{ runner.os }}-build-files-${{ github.sha }}
+        path: |
+          /home/runner/work/oppia/oppia/build
+          /home/runner/work/oppia/oppia/webpack_bundles
+          /home/runner/work/oppia/oppia/app.yaml
+          /home/runner/work/oppia/oppia/assets/hashes.json
+          /home/runner/work/oppia/oppia/backend_prod_files
+          /home/runner/work/oppia/oppia/dist
+          /home/runner/work/oppia/oppia/third_party/generated
+    - name: Build Webpack
+      if: steps.restore_build_files_cache.outputs.cache-hit != 'true'
+      run: python -m scripts.build --prod_env
+      shell: bash
