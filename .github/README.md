@@ -3,7 +3,6 @@ Oppia is an online learning tool that enables anyone to easily create and share 
 
 In addition to developing the Oppia platform, the team has developed free and effective [lessons]on basic mathematics, and we are planning to expand our educational offering to basic science and financial literacy. These lessons help learners who lack appropriate access to educational resources.
 
-The Oppia web application is built using Python, Angular, and Google App Engine. See also:
-
+The Oppia web application is built using Django, Chakra UI, Angular, PostGreSQL and Google App Engine. 
 
 
